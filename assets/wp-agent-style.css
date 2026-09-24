@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root { 
+	--circle-diameter: 60px;
+	--standard-pad: 15px;
+	
+}
+
+.wpagent_widget {
+	height: var(--circle-diameter);
+	width:  var(--circle-diameter);
+	border-radius: calc(var(--circle-diameter) / 2);
+	position: fixed;
+	right: var(--standard-pad);
+	bottom: var(--standard-pad);
+	background-color: #e7b500;
+	z-index: 2137;
+
+	-webkit-user-select: none; /* Safari */
+	-ms-user-select: none; /* IE 10 and IE 11 */
+	user-select: none; /* Standard syntax */
+
+	cursor: pointer;
+}
+
+/* TODO: fix all the magic numbers and replace with variables */
+
+.wpagent_dialog {
+	height: min(calc(500px - 15px), calc(100% - 2 * var(--standard-pad)));
+	width: 20vw;
+	position: fixed;
+	right: calc(var(--circle-diameter) + 2* var(--standard-pad));
+	bottom: var(--standard-pad);
+	background-color: blue;
+	z-index: calc(pow(10, 10));
+	border-radius: 5px;
+	border: solid gray 1px;
+	border-top: solid gray 1px;
+	background-color: whitesmoke;
+	font-weight: 300;
+	font-style: normal;
+	font-family: Manrope, sans-serif;
+	letter-spacing: -0.1px;
+	box-sizing: unset !important;
+}
+
+@media (max-width: 1200px) {
+	.wpagent_dialog {
+		position: fixed;
+		bottom: calc(var(--standard-pad) * 2 + var(--circle-diameter));
+		left: 5%;
+		width: 90%;
+		height: calc(100% - (2 * var(--standard-pad) * 2 + var(--circle-diameter)));
+	}
+}
+
+.wpagent_messages {
+	height: calc(100% - 45px - 2 * 10px);
+	padding: 10px;
+	background-color: whitesmoke;
+	overflow: scroll;
+	border-radius: 5px 5px 0px 0px;
+
+	scrollbar-width: none;
+	-ms-overflow-style: none;  /* IE and Edge */
+	box-sizing: unset !important;
+}
+
+.wpagent_messages::-webkit-scrollbar {
+	display: none;
+  }
+
+.wpagent_chatbox {
+	position: relative;
+	bottom: -1px;
+	height: 24px;
+	padding: 10px;
+	background-color: orange;
+	border-radius: 0px 0px 3.6px 3.6px; /* 3.6px looks good  */ 
+	box-sizing: unset !important;
+}
+
+.wpagent_chatbox > form {
+	width: 100%;
+	
+	background-color: aliceblue;
+}  
+
+.wpagent_widget-image {
+	position: relative;
+	margin: 0 auto;
+	display: block;
+	cursor: pointer;
+	top: calc( (var(--circle-diameter) - (var(--circle-diameter) - 10px)) / 2);
+
+	height: calc(var(--circle-diameter) - 10px);
+	width:  calc(var(--circle-diameter) - 10px);
+}
+
+#wpAgentInputBox {
+	/* margin: auto; */
+	display: block;
+	height: 18px;
+	width: calc( 88% - 3 * 10px);
+	float: left;
+	border: none;
+	border-radius: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-left: 10px;
+	padding-right: 0px;
+
+}
+
+#wpAgentInputBox:focus {
+	outline: none;
+}
+
+#submitButton {
+	margin: 0pxck;
+	width: 10%;
+	height: 7px !important;
+	box-sizing: unset !important;
+	margin-left: 2%;
+	float: left;
+	border: none;
+	text-align: center;
+	height: 24px;
+	padding: 10px;
+	line-height: 8px;
+	border-radius: 5px;
+	
+}
+
+.wpagent_message_wrapper {
+	width: 70%;
+	height: fit-content;
+	float: left;
+}
+
+.wpagent_message {
+	width: fit-content;
+	margin-top: 10px;
+	border-radius: 5px;
+	padding: 5px;
+	padding-left: 10px;
+	font-size: small;
+	font-weight: bold; 
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.wpagent_answer {
+	float: left;
+	background-color: #002137;
+	color: rgb(240, 240, 240);
+}
+
+.wpagent_question {
+	float: right;
+	background-color: #fdc800
+}
+
+.scrollToTop {
+	display: none !important;
+}
