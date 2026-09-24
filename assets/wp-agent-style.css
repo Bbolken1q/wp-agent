@@ -135,13 +135,15 @@
 }
 
 .wpagent_message_wrapper {
-	width: 70%;
+	width: 100%;
+	display: block;
 	height: fit-content;
-	float: left;
 }
 
 .wpagent_message {
+	clear: both;
 	width: fit-content;
+	max-width: 70%;
 	margin-top: 10px;
 	border-radius: 5px;
 	padding: 5px;

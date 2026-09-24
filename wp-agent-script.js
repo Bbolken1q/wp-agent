@@ -8,6 +8,7 @@ const DISABLED = Symbol("message")
 const ENABLED = Symbol("answer")
 
 var isDisabled = false;
+var wpAgentApiAddress = (typeof wpAgentData !== 'undefined') ? wpAgentData.wpAgentAdress : ''
 
 const wpAgentEnableDisableAskbox = (state) => {
     if (typeof state != "symbol")
@@ -44,7 +45,7 @@ const wpAgentQuery = () => {
     document.getElementById("wpAgentInputBox").value = ""
     wpAgentCreateMessage(QUESTION, query)
 
-    const url = "https://basiccrawler.fastapicloud.dev/query"
+    const url = wpAgentApiAddress
 
     fetch(url, {
         method: 'POST',
