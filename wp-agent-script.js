@@ -55,7 +55,7 @@ const wpAgentQuery = () => {
         },
         body: JSON.stringify({ query: query })
     }).then(ans => ans.json()).then(data => {
-        wpAgentCreateMessage(ANSWER, data)
+        wpAgentCreateMessage(ANSWER, data.answer)
         wpAgentEnableDisableAskbox(ENABLED)
     })
 }
