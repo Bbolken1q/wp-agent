@@ -1,3 +1,7 @@
+/*
+Plugin wykonany przez Bolesława Bondyrę oraz Macieja Białowolskiego
+*/
+
 const SHOW = Symbol("show")
 const HIDE = Symbol("hide")
 
