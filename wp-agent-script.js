@@ -81,7 +81,7 @@ const wpAgentQuery = () => {
 
         wpAgentChatHistory = [...wpAgentChatHistory, "User: " + query];
 
-        let loadingMessage = wpAgentCreateMessage(ANSWER, "Ładowanie...");
+        let loadingMessage = wpAgentCreateMessage(ANSWER, "<div class='animated-gradient-text'>Ładowanie...</div>");
 
         response
             .then((ans) => {

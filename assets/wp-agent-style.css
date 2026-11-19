@@ -168,3 +168,26 @@
 .scrollToTop {
 	display: none !important;
 }
+
+
+/* from https://codeshack.io/css-animated-gradient-text-effect/ */
+.animated-gradient-text {
+  background: linear-gradient(90deg, #ffffff, #808080, #ffffff);
+  background-size: 200% auto;
+  color: #fff; /* Fallback for browsers that don't support background-clip */
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-flow 0.5s reverse linear infinite;
+  display: inline-block; /* Ensures background-clip works correctly */
+}
+
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
