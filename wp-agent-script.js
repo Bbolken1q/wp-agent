@@ -19,6 +19,20 @@ var wpAgentGreetMessage =
 
 var wpAgentChatHistory = [];
 
+const wpAgentParseResponseText = (text) => {
+    let parsedText = ''
+
+    text.split(' ').forEach(element => {
+        if(element.startsWith('https://')) {
+            parsedText += `<a href="${element}" target="_blank">${element}</a> `
+        } else {
+            parsedText += element + " "
+        }
+    });
+    console.log(parsedText.trim())
+    return parsedText.trim()
+}
+
 const wpAgentEnableDisableAskbox = (state) => {
     if (typeof state != "symbol") return;
 
@@ -67,6 +81,8 @@ const wpAgentQuery = () => {
 
         wpAgentChatHistory = [...wpAgentChatHistory, "User: " + query];
 
+        let loadingMessage = wpAgentCreateMessage(ANSWER, "Ładowanie...");
+
         response
             .then((ans) => {
                 if (!ans.ok) {
@@ -79,13 +95,14 @@ const wpAgentQuery = () => {
                 return ans.json();
             })
             .then((data) => {
-                console.log(data);
+                loadingMessage.remove()
                 wpAgentCreateMessage(ANSWER, data.answer);
                 wpAgentEnableDisableAskbox(ENABLED);
                 wpAgentChatHistory = [...wpAgentChatHistory, "Bot: " + data.answer];
             });
     } catch (error) {
         console.error("Error:", error);
+        wpAgentCreateMessage(ANSWER, "Wystąpił błąd podczas wysyłania zapytania. Przepraszamy.");
         wpAgentCreateMessage(ANSWER, "Wystąpił błąd podczas wysyłania zapytania.");
     }
 }
@@ -128,11 +145,12 @@ const wpAgentCreateMessage = (type, content) => {
             message.classList.add("wpagent_answer");
     }
 
-    message.innerText = content;
+    message.innerHTML = wpAgentParseResponseText(content);
 
     wrapper.appendChild(message);
     messagebox.appendChild(wrapper);
     wpAgentScrollToBottom();
+    return wrapper
 };
 
 const wpAgentChangePopupDisplay = (dialog, display) => {
